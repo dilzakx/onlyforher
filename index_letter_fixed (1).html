@@ -1,0 +1,1831 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>why i can't move on 🥺</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Sour+Gummy:wght@400;500;600;700;800&family=Mystery+Quest&family=Handlee&family=Matemasie&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        html, body { overflow-x: hidden; }
+
+        :root {
+            --paper:        #FFFAFC;
+            --paper-soft:   #FFF5F8;
+            --pink:         #FFB7C5;
+            --pink-deep:    #FF5A8A;
+            --pink-darker:  #C94977;
+            --pink-soft:    #FFE5EC;
+            --rose:         #FFD3DA;
+            --lilac:        #C8B6FF;
+            --lilac-deep:   #9D8DE4;
+            --lilac-darker: #7560C9;
+            --lilac-soft:   #EFE7FF;
+            --butter:       #FFE08A;
+            --butter-deep:  #FFC857;
+            --butter-darker:#E8A93C;
+            --peach:        #FFD6B0;
+            --mint:         #B5EAD7;
+            --ink:          #3A2138;
+            --ink-soft:     #6E5A6E;
+            --ink-faint:    #9A8AAB;
+            --line:         #F0E2EC;
+        }
+
+        body {
+            font-family: 'Sour Gummy', cursive;
+            color: var(--ink);
+            background: var(--paper);
+            min-height: 100vh;
+            line-height: 1.5;
+            position: relative;
+        }
+
+        /* soft watercolour wash + faint dot grid */
+        body::before {
+            content: '';
+            position: fixed; inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background-image:
+                radial-gradient(ellipse at 14% 8%,  #FFE5EE 0%, transparent 38%),
+                radial-gradient(ellipse at 88% 18%, #EFE0FF 0%, transparent 40%),
+                radial-gradient(ellipse at 8% 70%, #FFF0CF 0%, transparent 35%),
+                radial-gradient(ellipse at 92% 88%, #FFE5EE 0%, transparent 42%);
+            background-attachment: fixed;
+        }
+        body::after {
+            content: '';
+            position: fixed; inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background-image: radial-gradient(circle, rgba(255,143,181,0.08) 1px, transparent 1px);
+            background-size: 26px 26px;
+        }
+
+        /* ==================== TYPOGRAPHY ==================== */
+        .f-head { font-family: 'DynaPuff', cursive;     letter-spacing: 0.5px; }
+        .f-sub  { font-family: 'Sour Gummy', cursive;   font-weight: 700; }
+        .f-one  { font-family: 'Mystery Quest', cursive; letter-spacing: 1.5px; }
+        .f-hand { font-family: 'Handlee', cursive; }
+        .f-ext  { font-family: 'Matemasie', cursive;    letter-spacing: 2px; }
+
+        .text-pink      { color: var(--pink-deep); }
+        .text-pink-dark { color: var(--pink-darker); }
+        .text-lilac     { color: var(--lilac-deep); }
+        .text-soft      { color: var(--ink-soft); }
+        .text-faint     { color: var(--ink-faint); }
+
+        .shimmer-text {
+            background: linear-gradient(90deg, var(--pink-deep) 0%, var(--lilac-deep) 45%, var(--butter-darker) 80%, var(--pink-deep) 100%);
+            background-size: 250% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 6s linear infinite;
+        }
+        @keyframes shimmer { 0%{background-position:-250% 0} 100%{background-position:250% 0} }
+
+        /* ==================== ANIMATIONS ==================== */
+        @keyframes float    { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+        @keyframes wiggle   { 0%,100%{transform:rotate(-3deg)} 50%{transform:rotate(3deg)} }
+        @keyframes bounce-s { 0%,100%{transform:scale(1)} 50%{transform:scale(1.07)} }
+        @keyframes heartbeat{ 0%,100%{transform:scale(1)} 25%{transform:scale(1.13)} 50%{transform:scale(1)} 75%{transform:scale(1.08)} }
+        @keyframes spin     { to { transform: rotate(360deg); } }
+        @keyframes bobArrow { 0%,100%{transform:translateY(0);opacity:0.7} 50%{transform:translateY(8px);opacity:1} }
+
+        .anim-float     { animation: float 3.6s ease-in-out infinite; }
+        .anim-wiggle    { animation: wiggle 2.6s ease-in-out infinite; }
+        .anim-bounce    { animation: bounce-s 2.2s ease-in-out infinite; }
+        .anim-heartbeat { animation: heartbeat 1.6s ease-in-out infinite; }
+        .anim-spin-slow { animation: spin 14s linear infinite; }
+        .anim-arrow     { animation: bobArrow 1.8s ease-in-out infinite; }
+
+        /* reveal-on-scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(34px);
+            transition: opacity 0.8s cubic-bezier(0.2,0.8,0.2,1),
+                        transform 0.8s cubic-bezier(0.2,0.8,0.2,1);
+        }
+        .reveal.show { opacity: 1; transform: translateY(0); }
+        .reveal.d1.show { transition-delay: 0.10s; }
+        .reveal.d2.show { transition-delay: 0.22s; }
+        .reveal.d3.show { transition-delay: 0.34s; }
+        .reveal.d4.show { transition-delay: 0.46s; }
+        .reveal.d5.show { transition-delay: 0.58s; }
+
+        /* ==================== SECTIONS ==================== */
+        section {
+            position: relative;
+            z-index: 5;
+            padding: 90px 22px 70px;
+        }
+        @media (max-width: 640px) { section { padding: 70px 16px 50px; } }
+        .container-w {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .container-wide {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        /* ==================== HERO ==================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 70px;
+        }
+        .hero-gif {
+            width: clamp(200px, 52vw, 280px);
+            height: clamp(200px, 52vw, 280px);
+            object-fit: contain;
+            display: block;
+            margin: 0 auto 24px;
+            filter: drop-shadow(0 18px 30px rgba(255,107,157,0.28))
+                    drop-shadow(0 6px 12px rgba(120,90,160,0.16));
+        }
+
+        /* hero title */
+        .hero-title {
+            font-family: 'DynaPuff', cursive;
+            font-size: clamp(2.4rem, 9vw, 5rem);
+            line-height: 0.98;
+            margin-bottom: 14px;
+        }
+        .hero-title .can-not {
+            font-family: 'Mystery Quest', cursive;
+            display: inline-block;
+            transform: rotate(-4deg);
+            color: var(--pink-deep);
+        }
+        .hero-sub {
+            font-family: 'Handlee', cursive;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--ink-soft);
+            max-width: 440px;
+            margin: 0 auto 24px;
+            line-height: 1.5;
+        }
+        .hero-sub b { color: var(--pink-deep); font-weight: 700; }
+
+        .scroll-cue {
+            font-family: 'Handlee', cursive;
+            color: var(--pink-deep);
+            font-size: 1rem;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            margin-top: 18px;
+        }
+        .scroll-cue .arr {
+            width: 30px; height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FF8FB5, var(--pink-deep));
+            color: white;
+            display: grid;
+            place-items: center;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px rgba(255,90,138,0.4);
+            animation: bobArrow 1.8s ease-in-out infinite;
+        }
+
+        /* eyebrow + section title shared */
+        .eyebrow {
+            display: inline-block;
+            font-family: 'Matemasie', cursive;
+            font-size: 0.82rem;
+            color: white;
+            background: linear-gradient(135deg, var(--pink), var(--pink-deep));
+            padding: 6px 16px;
+            border-radius: 999px;
+            letter-spacing: 2.5px;
+            box-shadow: 0 4px 0 var(--pink-darker);
+            margin-bottom: 14px;
+        }
+        .eyebrow.lilac  { background: linear-gradient(135deg, var(--lilac), var(--lilac-deep)); box-shadow: 0 4px 0 var(--lilac-darker); }
+        .eyebrow.butter { background: linear-gradient(135deg, var(--butter), var(--butter-deep)); color: #5A3A00; box-shadow: 0 4px 0 var(--butter-darker); }
+        .eyebrow.mint   { background: linear-gradient(135deg, var(--mint), #6FCF97); color: #1F4A36; box-shadow: 0 4px 0 #4FA572; }
+
+        .sec-title {
+            font-family: 'DynaPuff', cursive;
+            font-size: clamp(1.9rem, 5vw, 3rem);
+            line-height: 1.05;
+            margin-bottom: 8px;
+        }
+        .sec-lead {
+            font-family: 'Handlee', cursive;
+            font-size: clamp(1rem, 1.5vw, 1.15rem);
+            color: var(--ink-soft);
+            max-width: 540px;
+        }
+
+        /* ==================== TRACKLIST CARD ==================== */
+        .player-card {
+            background: white;
+            border-radius: 28px;
+            padding: 22px 18px 18px;
+            box-shadow:
+                0 22px 40px rgba(255,107,157,0.16),
+                0 6px 14px rgba(120,90,160,0.10);
+            position: relative;
+            border: 1px solid #FFE5EC;
+            margin-top: 30px;
+        }
+        .player-head {
+            display: flex;
+            gap: 14px;
+            padding: 4px 6px 14px;
+            border-bottom: 1px dashed #FFD6E4;
+            margin-bottom: 8px;
+        }
+        .player-cover {
+            width: 78px;
+            height: 78px;
+            border-radius: 14px;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, var(--pink), var(--lilac));
+            display: grid;
+            place-items: center;
+            font-size: 2.6rem;
+            box-shadow: 0 8px 18px rgba(255,143,181,0.30);
+        }
+        .player-meta { flex: 1; min-width: 0; }
+        .player-meta .album-tag {
+            font-family: 'Matemasie', cursive;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: var(--pink-deep);
+        }
+        .player-meta .album-name {
+            font-family: 'DynaPuff', cursive;
+            font-size: 1.15rem;
+            color: var(--ink);
+            margin: 2px 0 4px;
+            line-height: 1.1;
+        }
+        .player-meta .album-by {
+            font-family: 'Handlee', cursive;
+            font-size: 0.92rem;
+            color: var(--ink-soft);
+        }
+        .player-meta .album-by b { color: var(--pink-deep); font-weight: 600; }
+
+        /* the actual track rows */
+        .track {
+            display: grid;
+            grid-template-columns: 28px 1fr auto auto;
+            gap: 10px;
+            align-items: center;
+            padding: 12px 6px;
+            border-radius: 14px;
+            transition: background 0.2s, transform 0.2s;
+            cursor: default;
+        }
+        .track:hover { background: var(--paper-soft); transform: translateX(2px); }
+        .track + .track { border-top: 1px dashed #FFE5EC; }
+        .track-num {
+            font-family: 'Mystery Quest', cursive;
+            color: var(--ink-faint);
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        .track:hover .track-num { color: var(--pink-deep); }
+        .track-info { min-width: 0; }
+        .track-title {
+            font-family: 'DynaPuff', cursive;
+            color: var(--ink);
+            font-size: 1.02rem;
+            line-height: 1.15;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .track-cap {
+            font-family: 'Handlee', cursive;
+            color: var(--ink-soft);
+            font-size: 0.84rem;
+            margin-top: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .track-time {
+            font-family: 'Matemasie', cursive;
+            font-size: 0.78rem;
+            color: var(--ink-faint);
+            letter-spacing: 1px;
+        }
+        .track-tag {
+            font-family: 'Matemasie', cursive;
+            font-size: 0.6rem;
+            letter-spacing: 1px;
+            background: var(--pink-soft);
+            color: var(--pink-darker);
+            padding: 3px 8px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+        .track.hot { background: linear-gradient(90deg, #FFF5F8, transparent); }
+        .track.hot .track-tag { background: linear-gradient(135deg, var(--pink-deep), var(--lilac-deep)); color: white; }
+
+
+        /* ==================== FAILED ATTEMPTS NOTEBOOK ==================== */
+        .notebook {
+            background: #FFFCF4;
+            border-radius: 22px;
+            padding: 28px 26px 24px;
+            box-shadow:
+                0 22px 44px rgba(232,169,60,0.16),
+                0 6px 14px rgba(232,169,60,0.10);
+            position: relative;
+            border: 1px solid #FFEFC7;
+            background-image:
+                repeating-linear-gradient(180deg, transparent 0 33px, rgba(255,200,87,0.12) 33px 34px);
+            background-size: 100% 34px;
+            background-position: 0 14px;
+            margin-top: 30px;
+        }
+        .notebook::before {
+            content: '';
+            position: absolute;
+            top: 14px;
+            bottom: 14px;
+            left: 50px;
+            width: 1px;
+            background: rgba(255,90,138,0.35);
+        }
+        .notebook-tape {
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-3deg);
+            width: 110px;
+            height: 26px;
+            background: rgba(200,182,255,0.65);
+            border-left: 1px dashed rgba(120,96,201,0.3);
+            border-right: 1px dashed rgba(120,96,201,0.3);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+        .notebook-title {
+            font-family: 'Handlee', cursive;
+            font-size: 1.15rem;
+            color: var(--ink-soft);
+            text-align: center;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 2px dashed #FFE5EC;
+        }
+        .fail-item {
+            display: grid;
+            grid-template-columns: 28px 1fr auto;
+            gap: 10px;
+            align-items: center;
+            padding: 10px 0 10px 56px;
+            font-family: 'Handlee', cursive;
+        }
+        .fail-item .box {
+            width: 22px; height: 22px;
+            border: 2.5px solid var(--pink);
+            border-radius: 6px;
+            background: white;
+            display: grid;
+            place-items: center;
+            color: var(--pink-deep);
+            font-size: 1rem;
+            line-height: 1;
+        }
+        .fail-text {
+            font-size: 1rem;
+            color: var(--ink);
+            line-height: 1.35;
+            position: relative;
+            padding-right: 6px;
+        }
+        .fail-text .cross {
+            position: relative;
+            color: var(--ink-soft);
+        }
+        .fail-text .cross::after {
+            content: '';
+            position: absolute;
+            left: -2px; right: -2px;
+            top: 56%;
+            height: 2px;
+            background: var(--pink-deep);
+            transform: rotate(-2deg);
+            border-radius: 2px;
+        }
+        .fail-text .why {
+            display: block;
+            font-size: 0.86rem;
+            color: var(--pink-darker);
+            margin-top: 2px;
+        }
+        .fail-tally {
+            font-family: 'Matemasie', cursive;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            color: var(--ink-faint);
+            background: var(--pink-soft);
+            padding: 3px 8px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+        .notebook-foot {
+            margin-top: 14px;
+            text-align: center;
+            font-family: 'Matemasie', cursive;
+            font-size: 0.78rem;
+            letter-spacing: 1px;
+            color: var(--pink-deep);
+            padding-top: 10px;
+            border-top: 2px dashed #FFE5EC;
+        }
+        .notebook-foot b {
+            font-family: 'Mystery Quest', cursive;
+            color: var(--pink-darker);
+            font-size: 1rem;
+        }
+
+        /* ==================== POLAROID WALL ==================== */
+        .photo-wall {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-top: 38px;
+        }
+        @media (max-width: 760px) {
+            .photo-wall { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+        }
+        .pol {
+            background: white;
+            padding: 8px 8px 24px;
+            border-radius: 4px;
+            box-shadow: 0 14px 30px rgba(74,46,61,0.18);
+            position: relative;
+            transition: transform 0.4s cubic-bezier(0.2,0.8,0.2,1);
+        }
+        .pol:nth-child(1) { transform: rotate(-5deg); }
+        .pol:nth-child(2) { transform: rotate(3deg); }
+        .pol:nth-child(3) { transform: rotate(-3deg); }
+        .pol:nth-child(4) { transform: rotate(4deg); }
+        .pol:nth-child(5) { transform: rotate(3deg); }
+        .pol:nth-child(6) { transform: rotate(-4deg); }
+        .pol:nth-child(7) { transform: rotate(2deg); }
+        .pol:nth-child(8) { transform: rotate(-3deg); }
+        .pol:hover { transform: rotate(0) scale(1.05); z-index: 5; }
+        .pol img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            display: block;
+            border-radius: 2px;
+            background: var(--pink-soft);
+        }
+        .pol .cap {
+            font-family: 'Handlee', cursive;
+            font-size: 0.92rem;
+            color: var(--ink-soft);
+            text-align: center;
+            margin-top: 10px;
+            line-height: 1.25;
+        }
+        .pol .pol-tape {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-3deg);
+            width: 56px;
+            height: 16px;
+            background: rgba(255,184,209,0.7);
+        }
+        .pol:nth-child(2) .pol-tape { background: rgba(224,195,252,0.7); }
+        .pol:nth-child(3) .pol-tape { background: rgba(255,224,138,0.8); }
+        .pol:nth-child(4) .pol-tape { background: rgba(176,240,200,0.7); }
+        .pol:nth-child(6) .pol-tape { background: rgba(224,195,252,0.7); }
+        .pol:nth-child(7) .pol-tape { background: rgba(255,224,138,0.8); }
+        .pol:nth-child(8) .pol-tape { background: rgba(176,240,200,0.7); }
+
+        /* ==================== ENVELOPE + LETTER ==================== */
+        .envelope-wrap {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            perspective: 1200px;
+        }
+        .envelope {
+            position: relative;
+            width: min(92vw, 380px);
+            cursor: pointer;
+            user-select: none;
+        }
+        .envelope-body {
+            position: relative;
+            width: 100%;
+            height: 230px;
+            background: linear-gradient(160deg, #FFF4F7, #FFE9EF);
+            border-radius: 10px;
+            box-shadow:
+                0 22px 40px rgba(255,107,157,0.20),
+                0 6px 14px rgba(120,90,160,0.12);
+            border: 1px solid #FFD6E4;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .envelope:hover .envelope-body { transform: translateY(-4px); }
+        .envelope-body::before {
+            /* bottom triangle flap (static) */
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 0;
+            border-left: 190px solid transparent;
+            border-right: 190px solid transparent;
+            border-bottom: 110px solid #FFDEE8;
+            margin: 0 auto;
+        }
+        .envelope-flap {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 0;
+            border-left: 190px solid transparent;
+            border-right: 190px solid transparent;
+            border-top: 118px solid #FFC8DD;
+            transform-origin: top center;
+            transition: transform 0.6s cubic-bezier(0.3,0.8,0.3,1);
+            z-index: 3;
+        }
+        .envelope.open .envelope-flap {
+            transform: rotateX(180deg);
+        }
+        .envelope-seal {
+            position: absolute;
+            top: 92px;
+            left: 50%;
+            transform: translate(-50%, 0);
+            width: 46px; height: 46px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--pink-deep), var(--pink-darker));
+            display: grid;
+            place-items: center;
+            font-size: 1.3rem;
+            box-shadow: 0 6px 14px rgba(201,73,119,0.35);
+            z-index: 4;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+        .envelope.open .envelope-seal {
+            opacity: 0;
+            transform: translate(-50%, -10px) scale(0.6);
+            pointer-events: none;
+        }
+        .envelope-peek {
+            position: absolute;
+            left: 50%;
+            top: 24px;
+            transform: translateX(-50%);
+            width: 78%;
+            background: #FFFDF9;
+            border-radius: 6px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            padding: 10px 14px;
+            font-family: 'Handlee', cursive;
+            font-size: 0.85rem;
+            color: var(--ink-faint);
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease 0.35s, top 0.4s ease 0.35s;
+            z-index: 1;
+        }
+        .envelope.open .envelope-peek {
+            opacity: 1;
+            top: -14px;
+        }
+        .envelope-hint {
+            text-align: center;
+            font-family: 'Matemasie', cursive;
+            font-size: 0.72rem;
+            letter-spacing: 1.5px;
+            color: var(--ink-faint);
+            margin-top: 14px;
+        }
+        .envelope.open ~ .envelope-hint { opacity: 0; height: 0; margin: 0; overflow: hidden; }
+
+        .letter-card {
+            max-width: 520px;
+            margin: 22px auto 0;
+            background: #FFFDF7;
+            border-radius: 18px;
+            padding: 34px 30px;
+            box-shadow:
+                0 20px 40px rgba(255,107,157,0.14),
+                0 6px 14px rgba(120,90,160,0.08);
+            border: 1px solid #FFEFC7;
+            position: relative;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.7s cubic-bezier(0.2,0.8,0.2,1), opacity 0.6s ease, padding 0.5s ease, margin 0.5s ease;
+        }
+        .letter-card.show {
+            max-height: 5000px;
+            opacity: 1;
+        }
+        .letter-card .letter-tape {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-3deg);
+            width: 96px;
+            height: 24px;
+            background: rgba(200,182,255,0.6);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+        .letter-card .letter-date {
+            font-family: 'Matemasie', cursive;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: var(--pink-deep);
+            text-align: right;
+            margin-bottom: 14px;
+        }
+        .letter-card .letter-body {
+            font-family: 'Handlee', cursive;
+            font-size: 1.08rem;
+            line-height: 1.75;
+            color: var(--ink-soft);
+        }
+        .letter-card .letter-body p { margin-bottom: 16px; }
+        .letter-card .letter-body b { color: var(--pink-deep); font-weight: 600; }
+        .letter-card .letter-sign {
+            text-align: right;
+            font-family: 'Handlee', cursive;
+            font-size: 1.15rem;
+            color: var(--pink-darker);
+            margin-top: 6px;
+        }
+
+        /* ==================== TRUTH NOTE ==================== */
+        .truth-card {
+            background: white;
+            border-radius: 26px;
+            padding: 36px 28px 32px;
+            box-shadow:
+                0 22px 44px rgba(255,107,157,0.18),
+                0 8px 18px rgba(120,90,160,0.10);
+            position: relative;
+            text-align: center;
+            margin-top: 30px;
+            border: 1px solid var(--pink-soft);
+        }
+        .truth-card::after {
+            content: '';
+            position: absolute;
+            inset: 12px;
+            border: 2.5px dashed #FFC8DD;
+            border-radius: 16px;
+            pointer-events: none;
+            opacity: 0.55;
+        }
+        .truth-card .corner {
+            position: absolute;
+            font-size: 26px;
+            opacity: 0.85;
+        }
+        .truth-card .corner.tl { top: 8px; left: 12px; transform: rotate(-12deg); }
+        .truth-card .corner.tr { top: 8px; right: 12px; transform: rotate(10deg); }
+        .truth-card .corner.bl { bottom: 8px; left: 12px; transform: rotate(-10deg); }
+        .truth-card .corner.br { bottom: 8px; right: 12px; transform: rotate(12deg); }
+        .truth-pre {
+            font-family: 'Matemasie', cursive;
+            font-size: 0.78rem;
+            letter-spacing: 2.5px;
+            color: var(--pink-deep);
+            margin-bottom: 8px;
+        }
+        .truth-card h2 {
+            font-family: 'DynaPuff', cursive;
+            font-size: clamp(1.8rem, 5vw, 2.6rem);
+            line-height: 1.05;
+            margin-bottom: 14px;
+        }
+        .truth-card .truth-gif {
+            width: clamp(140px, 40vw, 200px);
+            height: clamp(140px, 40vw, 200px);
+            border-radius: 28px;
+            display: block;
+            margin: 4px auto 14px;
+            object-fit: contain;
+        }
+        .truth-card p {
+            font-family: 'Handlee', cursive;
+            font-size: 1.1rem;
+            color: var(--ink-soft);
+            line-height: 1.5;
+            max-width: 460px;
+            margin: 0 auto 6px;
+        }
+        .truth-card p b {
+            color: var(--pink-deep);
+            font-weight: 600;
+        }
+
+        /* ==================== RUNAWAY BUTTON ==================== */
+        .runaway-stage {
+            position: relative;
+            min-height: 280px;
+            background: white;
+            border: 2.5px dashed var(--pink-soft);
+            border-radius: 24px;
+            padding: 18px;
+            margin-top: 28px;
+            box-shadow: 0 14px 32px rgba(255,107,157,0.12);
+            overflow: hidden;
+        }
+        .runaway-helper {
+            font-family: 'Matemasie', cursive;
+            font-size: 0.74rem;
+            letter-spacing: 1.5px;
+            color: var(--ink-faint);
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        .stay-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF8FB5, var(--pink-deep));
+            color: white;
+            font-family: 'DynaPuff', cursive;
+            padding: 14px 30px;
+            border-radius: 999px;
+            border: 4px solid white;
+            box-shadow: 0 6px 0 var(--pink-darker), 0 10px 22px rgba(201,73,119,0.30);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: transform 0.18s, box-shadow 0.18s;
+        }
+        .stay-btn:hover { transform: translateY(-2px); }
+        .stay-btn:active { transform: translateY(3px); box-shadow: 0 0 0 var(--pink-darker), 0 4px 10px rgba(201,73,119,0.25); }
+        .move-on-btn {
+            position: absolute;
+            font-family: 'Handlee', cursive;
+            background: white;
+            color: var(--ink-soft);
+            padding: 9px 18px;
+            border-radius: 999px;
+            border: 2px dashed #DDD;
+            cursor: pointer;
+            font-size: 0.92rem;
+            box-shadow: 0 2px 0 #E8DCEA;
+            user-select: none;
+            transition: top 0.4s cubic-bezier(0.34,1.56,0.64,1),
+                        left 0.4s cubic-bezier(0.34,1.56,0.64,1);
+            white-space: nowrap;
+        }
+        .runaway-counter {
+            font-family: 'Matemasie', cursive;
+            font-size: 0.78rem;
+            color: var(--pink-deep);
+            text-align: center;
+            margin-top: 10px;
+            min-height: 1.2em;
+        }
+        .runaway-stage .center-stack {
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            text-align: center;
+        }
+        .runaway-stage .stage-quote {
+            font-family: 'Handlee', cursive;
+            color: var(--ink-soft);
+            font-size: 1rem;
+            max-width: 320px;
+            line-height: 1.4;
+        }
+        .runaway-stage .stage-quote b { color: var(--pink-deep); }
+
+        /* ==================== OUTRO ==================== */
+        .outro {
+            text-align: center;
+            padding: 110px 22px 90px;
+        }
+        .outro::after {
+            content: '∞';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -55%);
+            font-family: 'Mystery Quest', cursive;
+            font-size: clamp(16rem, 50vw, 30rem);
+            color: rgba(255,90,138,0.05);
+            pointer-events: none;
+            z-index: 0;
+            line-height: 1;
+            font-style: italic;
+        }
+        .outro-content {
+            position: relative;
+            z-index: 2;
+            max-width: 540px;
+            margin: 0 auto;
+        }
+        .outro h2 {
+            font-family: 'DynaPuff', cursive;
+            font-size: clamp(2rem, 6vw, 3.4rem);
+            line-height: 1.05;
+            margin-bottom: 14px;
+        }
+        .outro h2 em {
+            font-style: italic;
+            color: var(--pink-deep);
+        }
+        .outro p {
+            font-family: 'Handlee', cursive;
+            font-size: 1.15rem;
+            color: var(--ink-soft);
+            line-height: 1.5;
+            margin-bottom: 22px;
+        }
+        .outro .heart-pulse {
+            font-size: 4rem;
+            display: inline-block;
+            cursor: pointer;
+            user-select: none;
+        }
+        .outro-tag {
+            display: inline-block;
+            font-family: 'Matemasie', cursive;
+            font-size: 0.78rem;
+            letter-spacing: 2.5px;
+            color: var(--pink-deep);
+            background: white;
+            padding: 6px 16px;
+            border-radius: 999px;
+            border: 2px dashed var(--pink);
+            margin-top: 8px;
+        }
+        .outro-back {
+            display: inline-block;
+            margin-top: 28px;
+            font-family: 'Handlee', cursive;
+            color: var(--pink-deep);
+            text-decoration: underline;
+            text-decoration-style: wavy;
+            text-decoration-color: var(--pink);
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        /* ==================== FX (heart shower) ==================== */
+        #fx { position: fixed; inset: 0; pointer-events: none; z-index: 80; }
+        .heart-rise {
+            position: fixed;
+            pointer-events: none;
+            animation: heartRise 4s linear forwards;
+        }
+        @keyframes heartRise {
+            0%   { transform: translateY(100vh) scale(0.4); opacity: 0; }
+            15%  { opacity: 1; }
+            100% { transform: translateY(-150px) scale(1.5) rotate(360deg); opacity: 0; }
+        }
+
+        /* ==================== FLOATING DECOR ==================== */
+        .decor {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.18;
+        }
+        .decor.d1 { top: 8%;  left: 5%;   font-size: 28px; }
+        .decor.d2 { top: 16%; right: 6%;  font-size: 22px; }
+        .decor.d3 { top: 50%; left: 4%;   font-size: 24px; }
+        .decor.d4 { bottom: 20%; right: 6%; font-size: 26px; }
+        .decor.d5 { bottom: 30%; left: 8%; font-size: 20px; }
+
+        /* ==================== RESPONSIVE TWEAKS ==================== */
+        @media (max-width: 640px) {
+            .player-card { padding: 16px 12px 14px; border-radius: 22px; }
+            .player-cover { width: 64px; height: 64px; font-size: 2rem; border-radius: 12px; }
+            .player-meta .album-name { font-size: 1rem; }
+            .track { grid-template-columns: 22px 1fr auto; gap: 8px; padding: 10px 4px; }
+            .track-tag { display: none; }
+            .track-time { font-size: 0.7rem; }
+            .track-title { font-size: 0.95rem; }
+            .track-cap { font-size: 0.78rem; }
+
+            .notebook { padding: 22px 18px 20px; border-radius: 18px; background-position: 0 16px; }
+            .notebook::before { left: 36px; }
+            .fail-item { padding-left: 42px; grid-template-columns: 22px 1fr auto; gap: 8px; }
+            .fail-tally { font-size: 0.65rem; }
+            .fail-text { font-size: 0.95rem; }
+            .fail-text .why { font-size: 0.8rem; }
+
+            .pol .cap { font-size: 0.82rem; }
+            .truth-card { padding: 28px 18px 24px; }
+            .runaway-stage { padding: 14px; }
+
+            .hero-gif { width: clamp(180px, 60vw, 240px); height: clamp(180px, 60vw, 240px); }
+        }
+    </style>
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A5%BA%3C/text%3E%3C/svg%3E">
+<meta name="description" content="a scrapbook for the people who never really left your head — a playlist on repeat, a notebook of failed move-on attempts, a photo wall, a soft confession, and one button that refuses to work.">
+<meta property="og:title" content="Why I Can&#39;t Move On">
+<meta property="og:description" content="a scrapbook for the people who never really left your head — a playlist on repeat, a notebook of failed move-on attempts, a photo wall, a soft confession, and one button that refuses to work.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="why i can't move on">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why I Can&#39;t Move On">
+<meta name="twitter:description" content="a scrapbook for the people who never really left your head — a playlist on repeat, a notebook of failed move-on attempts, a photo wall, a soft confession, and one button that refuses to work.">
+<meta name="theme-color" content="#FFFBF3">
+</head>
+<body>
+
+<div id="fx"></div>
+
+<!-- ambient floating decor -->
+<span class="decor d1 anim-float">🎧</span>
+<span class="decor d2 anim-wiggle">💌</span>
+<span class="decor d3 anim-float">🌸</span>
+<span class="decor d4 anim-wiggle">🥺</span>
+<span class="decor d5 anim-float">💕</span>
+
+<!-- ============================================================ -->
+<!-- HERO · just a cute gif + title                                -->
+<!-- ============================================================ -->
+<section class="hero">
+    <div class="container-w">
+        <img src="https://media.tenor.com/hbNrud38kA4AAAAi/mimibubu.gif" alt="stuck on you" class="hero-gif anim-float reveal show">
+
+        <h1 class="hero-title">
+            why i <span class="can-not">can't</span><br>
+            <span class="shimmer-text">move on 🥺</span>
+        </h1>
+
+        <p class="hero-sub">
+            you are like <b>"just move on sain"</b> ~<br>
+            tried that. did not work. like at all 🫠
+        </p>
+
+        <div class="scroll-cue">
+            <span>peek inside ~</span>
+            <span class="arr">↓</span>
+        </div>
+    </div>
+</section>
+
+
+<!-- SECTION 2 · TRACKLIST (the loop)                              -->
+
+<section style="background: linear-gradient(180deg, transparent 0%, #FFF7FB 100%);">
+    <div class="container-w">
+        <div class="reveal show" style="text-align:center">
+            <span class="eyebrow">on repeat 🔁</span>
+            <h2 class="sec-title">the playlist <em class="text-pink" style="font-style:italic">i can't skip</em></h2>
+            <p class="sec-lead" style="margin: 0 auto;">brain runs this every single day. unhinged. unwell. unbothered honestly.</p>
+        </div>
+
+        <span id="trackCount" style="display:none">6</span>
+
+        <div class="player-card reveal d1">
+            <!-- album header -->
+            <div class="player-head">
+                <div class="player-cover anim-bounce">💿</div>
+                <div class="player-meta">
+                    <p class="album-tag">MY FAVOURITE EDITION · 2026</p>
+                    <h3 class="album-name">stuck on u (forever mix)</h3>
+                    <p class="album-by">by <b>my dumb brain</b> · 6 tracks · ∞ plays</p>
+                </div>
+            </div>
+
+            <!-- tracks -->
+            <div class="track hot">
+                <div class="track-num">1</div>
+                <div class="track-info">
+                    <div class="track-title">that one stupid laugh of urs</div>
+                    <div class="track-cap">comes outta nowhere. ruins my day. 10/10</div>
+                </div>
+                <span class="track-tag">most played</span>
+                <div class="track-time">3:47</div>
+            </div>
+
+            <div class="track">
+                <div class="track-num">2</div>
+                <div class="track-info">
+                    <div class="track-title">the way u say my name</div>
+                    <div class="track-cap">like somehow it sounds different when it comes from you.</div>
+                </div>
+                <span class="track-tag">deluxe</span>
+                <div class="track-time">2:14</div>
+            </div>
+
+            <div class="track">
+                <div class="track-num">3</div>
+                <div class="track-info">
+                    <div class="track-title">us, walking down that street behind your house</div>
+                    <div class="track-cap">years ago, just going to get milk from the house behind yours. somehow, i still remember that walk.</div>
+                </div>
+                <span class="track-tag">b-side</span>
+                <div class="track-time">4:02</div>
+            </div>
+
+            <div class="track">
+                <div class="track-num">4</div>
+                <div class="track-info">
+                    <div class="track-title">yesterday’s voice notes 🎧"</div>
+                    <div class="track-cap">i wasn’t listening to what you were saying. i was just enjoying your voice. it’s my favourite sound..</div>
+                </div>
+                <span class="track-tag">unhinged</span>
+                <div class="track-time">1:38</div>
+            </div>
+
+            <div class="track">
+                <div class="track-num">5</div>
+                <div class="track-info">
+                    <div class="track-title">how u hugged me that one time</div>
+                    <div class="track-cap">probably normal for u. life-altering for me. cool.</div>
+                </div>
+                <span class="track-tag">hidden</span>
+                <div class="track-time">5:21</div>
+            </div>
+
+            <div class="track">
+                <div class="track-num">6</div>
+                <div class="track-info">
+                    <div class="track-title">all the things i didn't say</div>
+                    <div class="track-cap">extended cut · contains spoilers for my whole heart</div>
+                </div>
+                <span class="track-tag">bonus</span>
+                <div class="track-time">∞:∞∞</div>
+            </div>
+
+            <div class="track">
+                <div class="track-num">7</div>
+                <div class="track-info">
+                    <div class="track-title">ur hoodie that i never returned</div>
+                    <div class="track-cap">it stopped smelling like u. devastated tbh.</div>
+                </div>
+                <span class="track-tag">acoustic</span>
+                <div class="track-time">3:12</div>
+            </div>
+
+            <div class="track">
+                <div class="track-num">8</div>
+                <div class="track-info">
+                    <div class="track-title">the playlist u made me once</div>
+                    <div class="track-cap">still on repeat. every song is a personal attack.</div>
+                </div>
+                <span class="track-tag">live</span>
+                <div class="track-time">2:56</div>
+            </div>
+
+            <div class="track">
+                <div class="track-num">9</div>
+                <div class="track-info">
+                    <div class="track-title">that inside joke nobody else gets</div>
+                    <div class="track-cap">said it out loud. explained it. ruined it. worth it.</div>
+                </div>
+                <span class="track-tag">demo</span>
+                <div class="track-time">1:44</div>
+            </div>
+
+            <div class="track">
+                <div class="track-num">10</div>
+                <div class="track-info">
+                    <div class="track-title">the goodbye that didn't feel like one</div>
+                    <div class="track-cap">u said "see u around". i've been around ever since.</div>
+                </div>
+                <span class="track-tag">encore</span>
+                <div class="track-time">4:18</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- SECTION 3 · FAILED ATTEMPTS NOTEBOOK                          -->
+
+<section>
+    <div class="container-w">
+        <div class="reveal show" style="text-align:center">
+            <span class="eyebrow lilac">tried · failed 📋</span>
+            <h2 class="sec-title">the <em class="text-lilac" style="font-style:italic">"i'm fine"</em> chronicles</h2>
+            <p class="sec-lead" style="margin: 0 auto;">i did the homework. genuinely. it's not my fault. (it's a little my fault.)</p>
+        </div>
+
+        <span id="failCount" style="display:none">6</span>
+
+        <div class="notebook reveal d1">
+            <div class="notebook-tape"></div>
+            <p class="notebook-title">moving on · plan B · plan C · plan ZZZ ~</p>
+
+            <div class="fail-item">
+                <div class="box">✕</div>
+                <div class="fail-text">
+                    <span class="cross">deleted every photo of us</span>
+                    <span class="why">↳ recovered them at 1:47am the same night 🫠</span>
+                </div>
+                <span class="fail-tally">attempt #1</span>
+            </div>
+
+            <div class="fail-item">
+                <div class="box">✕</div>
+                <div class="fail-text">
+                    <span class="cross">Wassay told me you asked for my ID. i said no.</span>
+                    <span class="why">↳ that same night, told him to give it to you anyway. 🤦‍♂️</span>
+                </div>
+                <span class="fail-tally">attempt #2</span>
+            </div>
+
+            <div class="fail-item">
+                <div class="box">✕</div>
+                <div class="fail-text">
+                    <span class="cross">tried liking someone else</span>
+                    <span class="why">↳ never even considered it. somehow, it was always you.🩷</span>
+                </div>
+                <span class="fail-tally">attempt #3</span>
+            </div>
+
+            <div class="fail-item">
+                <div class="box">✕</div>
+                <div class="fail-text">
+                    <span class="cross">kept avoiding meeting you every time</span>
+                    <span class="why">↳ now i'm actually planning to come see you.😭</span>
+                </div>
+                <span class="fail-tally">attempt #4</span>
+            </div>
+
+            <div class="fail-item">
+                <div class="box">✕</div>
+                <div class="fail-text">
+                    <span class="cross">told myself “u probably don’t think about me anymore</span>
+                    <span class="why">↳ then spent the rest of the day wondering if u do..</span>
+                </div>
+                <span class="fail-tally">attempt #5</span>
+            </div>
+
+            <div class="fail-item">
+                <div class="box">✕</div>
+                <div class="fail-text">
+                    <span class="cross">Tried to forget you for a while</span>
+                    <span class="why">↳ then Instagram showed me everything I saved for you</span>
+                </div>
+                <span class="fail-tally">final boss</span>
+            </div>
+
+            <div class="fail-item">
+                <div class="box">✕</div>
+                <div class="fail-text">
+                    <span class="cross">blocked ur number for a whole weekend</span>
+                    <span class="why">↳ unblocked monday 9am. in case u ever texted. u didn't. ok.</span>
+                </div>
+                <span class="fail-tally">bonus round</span>
+            </div>
+
+            <div class="fail-item">
+                <div class="box">✕</div>
+                <div class="fail-text">
+                    <span class="cross">wrote u a goodbye letter and burned it</span>
+                    <span class="why">↳ rewrote it from memory first. obviously. keeping that one.</span>
+                </div>
+                <span class="fail-tally">overtime</span>
+            </div>
+
+            <div class="fail-item">
+                <div class="box">✕</div>
+                <div class="fail-text">
+                    <span class="cross">took up a hobby to distract myself</span>
+                    <span class="why">↳ the hobby was making playlists about u. oops.</span>
+                </div>
+                <span class="fail-tally">extra credit</span>
+            </div>
+
+            <div class="fail-item">
+                <div class="box">✕</div>
+                <div class="fail-text">
+                    <span class="cross">asked my friends to stop mentioning u</span>
+                    <span class="why">↳ i mention u first every single time. they gave up on me.</span>
+                </div>
+                <span class="fail-tally">why am i like this</span>
+            </div>
+
+            <p class="notebook-foot">
+                conclusion: <b>0/6</b> · honestly impressive · maybe stop trying ~
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<!-- SECTION 4 · POLAROID WALL                                     -->
+
+<section style="background: linear-gradient(180deg, #FFF7FB 0%, transparent 100%);">
+    <div class="container-wide">
+        <div class="reveal show" style="text-align:center">
+            <span class="eyebrow butter">the evidence 📸</span>
+            <h2 class="sec-title">look at us tho 🥹</h2>
+            <p class="sec-lead" style="margin: 0 auto;">brain says delete · heart says screensaver · we compromise · they live in a folder called <i>"misc"</i></p>
+        </div>
+
+        <span id="polCount" style="display:none">4</span>
+
+        <div class="photo-wall reveal d1">
+            <div class="pol">
+                <div class="pol-tape"></div>
+                <img src="images/together2.png" alt="us">
+                <p class="cap">— before everything 💕<br>Muna mamu first marriage</p>
+            </div>
+            <div class="pol">
+                <div class="pol-tape"></div>
+                <img src="images/again.png" alt="us">
+                <p class="cap">— that one good day ☀️</p>
+            </div>
+            <div class="pol">
+                <div class="pol-tape"></div>
+                <img src="images/withher.png" alt="us">
+                <p class="cap">— the day was<br>everything to me 🥹</p>
+            </div>
+            <div class="pol">
+                <div class="pol-tape"></div>
+                <img src="images/hugging.png" alt="us">
+                <p class="cap">— this. this exact moment 🤍</p>
+            </div>
+            <div class="pol">
+                <div class="pol-tape"></div>
+                <img src="https://imgs.search.brave.com/s-S14HLma9DQUjSd9dhASKiI1OUSoPVDymv_k6I58As/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzhkLzk2/L2M4LzhkOTZjOGMw/MTUzZDQwMDk5MzNi/OTUxNmI0NzQxMGM5/LmpwZw" alt="us">
+                <p class="cap">— we peaked here honestly ✨</p>
+            </div>
+            <div class="pol">
+                <div class="pol-tape"></div>
+                <img src="https://imgs.search.brave.com/jvyb7mPY_85OT_f7coc0SmRiYQ6ZNbNmqeeJcLihnm8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTI5/OTQxMjgwMC9waG90/by92aWV3LWZyb20t/YmFjay1vZi1hLXlv/dW5nLWJlYXV0aWZ1/bC1jb3VwbGUtZG9p/bmctaGVhcnQtc2hh/cGUtd2l0aC1maW5n/ZXJzLWxvb2tpbmct/YXQtdGhlLXN1bi53/ZWJwP2E9MSZiPTEm/cz02MTJ4NjEyJnc9/MCZrPTIwJmM9VHlU/ajZuc3A3U0w1N2RQ/dTJOaGtrblJ0SDd6/bmhwM21rUkRjY2ZU/WGppWT0" alt="us">
+                <p class="cap">— i think about this one a lot 🥺</p>
+            </div>
+            <div class="pol">
+                <div class="pol-tape"></div>
+                <img src="https://imgs.search.brave.com/XNbwzhNmAMPqcR8_zzrxV4uR56eZI6_s5wm9xgwFrng/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTA0/NTU1MTI5NC9waG90/by9oZS1sb3Zlcy1o/ZXIuanBnP3M9NjEy/eDYxMiZ3PTAmaz0y/MCZjPU1jc2ZhM05R/X0N6aTVGVVg3bVRP/QnZSdGRuRC1MRXVG/SnJrQTJZZWpuSzA9" alt="us">
+                <p class="cap">— caught u mid-laugh.<br>framed it in my head 😭</p>
+            </div>
+            <div class="pol">
+                <div class="pol-tape"></div>
+                <img src="https://imgs.search.brave.com/jId-oah5ii2Sytwn5lsew_bb1_YTlyl8SS4tVndN5dc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvaGQvY3V0/ZS1jb3VwbGUtcGlj/dHVyZXMtcmV5d2Vq/cXAydGxkNXg1Yi5q/cGc" alt="us">
+                <p class="cap">— no caption. just us 💗</p>
+            </div>
+        </div>
+
+        <p class="reveal d2 f-hand text-center text-soft" style="margin: 28px auto 0; max-width: 460px; font-size: 1rem;">
+            ↳ exhibit A through D. the jury rests.<br>
+            <span class="text-pink">verdict: forever stuck. case closed 💼</span>
+        </p>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 5 · THE TRUTH (sweet)                                 -->
+<!-- ============================================================ -->
+<section>
+    <div class="container-w">
+        <div class="reveal show" style="text-align:center">
+            <span class="eyebrow mint">ok ok actually 🤍</span>
+            <h2 class="sec-title">the <em class="text-pink" style="font-style:italic">real</em> reason</h2>
+        </div>
+
+        <div class="truth-card reveal d1">
+            <span class="corner tl">🥺</span>
+            <span class="corner tr">💕</span>
+            <span class="corner bl">🤍</span>
+            <span class="corner br">🌸</span>
+
+            <p class="truth-pre">deep breath ~</p>
+            <h2>i don't <em class="shimmer-text">actually wanna</em>.</h2>
+
+            <img src="https://res.cloudinary.com/dt79hdebz/image/upload/v1778092615/lovely/defaults/template_assets/looking_01.gif" alt="thinking of u" class="truth-gif anim-float">
+
+            <p>
+                like when u ask me to "just move on" but ~<br>
+                <b>why would i wanna move on from the best thing</b><br>
+                that ever made me feel something real? 🥹
+            </p>
+            <p style="margin-top: 12px;">
+                so yeah. i'm not stuck. i'm just <b>still choosing u</b>,<br>
+                in my head, every single day. quietly. embarrassingly.<br>
+                <span class="text-faint">(and if that's pathetic, ok i'm pathetic, don't @ me 🫠)</span>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 6.5 · LETTERS I NEVER SENT                            -->
+<!-- ============================================================ -->
+<section style="background: linear-gradient(180deg, transparent 0%, #FBF6FF 100%);">
+    <div class="container-w">
+        <div class="reveal show" style="text-align:center">
+            <span class="eyebrow lilac">drafts · unsent 📝</span>
+            <h2 class="sec-title">the texts i <em class="text-pink" style="font-style:italic">typed and deleted</em></h2>
+            <p class="sec-lead" style="margin: 0 auto;">brave in the notes app. coward in the chat. every single time.</p>
+        </div>
+
+        <div class="notebook reveal d1">
+            <div class="notebook-tape"></div>
+            <p class="notebook-title">outbox · never sent · still saved as drafts</p>
+
+            <div class="fail-item">
+                <div class="box">✎</div>
+                <div class="fail-text">
+                    <span class="cross">"hey i miss u, this is dumb but"</span>
+                    <span class="why">↳ typed at 11:58pm. deleted at 11:59pm. classic.</span>
+                </div>
+                <span class="fail-tally">draft #1</span>
+            </div>
+
+            <div class="fail-item">
+                <div class="box">✎</div>
+                <div class="fail-text">
+                    <span class="cross">"saw something today that reminded me of u"</span>
+                    <span class="why">↳ it was literally everything. wrote this three times.</span>
+                </div>
+                <span class="fail-tally">draft #2</span>
+            </div>
+
+            <div class="fail-item">
+                <div class="box">✎</div>
+                <div class="fail-text">
+                    <span class="cross">"can we talk? no pressure just—"</span>
+                    <span class="why">↳ rewrote the opening 6 times. never got past it.</span>
+                </div>
+                <span class="fail-tally">draft #3</span>
+            </div>
+
+            <div class="fail-item">
+                <div class="box">✎</div>
+                <div class="fail-text">
+                    <span class="cross">"i hope u are doing okay"</span>
+                    <span class="why">↳ the safest one. still too scary to send. make it make sense.</span>
+                </div>
+                <span class="fail-tally">draft #4</span>
+            </div>
+
+            <p class="notebook-foot">
+                conclusion: <b>0/4</b> sent · all fully composed in my head at 2am ~
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 6.75 · THE ENVELOPE                                   -->
+<!-- ============================================================ -->
+<section style="background: linear-gradient(180deg, transparent 0%, #FFF7FB 100%);">
+    <div class="container-w">
+        <div class="reveal show" style="text-align:center">
+            <span class="eyebrow butter">for u only ✉️</span>
+            <h2 class="sec-title">a letter i <em class="text-pink" style="font-style:italic">actually finished</em></h2>
+            <p class="sec-lead" style="margin: 0 auto;">this one i didn't delete. open it if u dare ~</p>
+        </div>
+
+        <div class="envelope-wrap reveal d1">
+            <div class="envelope" id="envelope" onclick="openEnvelope()">
+                <div class="envelope-body">
+                    <div class="envelope-peek">psst. pull me open ~</div>
+                    <div class="envelope-flap"></div>
+                    <div class="envelope-seal">💌</div>
+                </div>
+            </div>
+        </div>
+        <p class="envelope-hint" id="envelopeHint">↳ tap the envelope to open it</p>
+
+        <div class="letter-card" id="letterCard">
+            <div class="letter-tape"></div>
+            <p class="letter-date">to u · whenever ur reading this</p>
+            <div class="letter-body">
+<p>okay so. i wrote this like four different times because i kept chickening out halfway through, but here's attempt number five and i'm actually gonna finish it this time so bear with me.</p>
+<p>i don't really know how to say this without sounding dramatic so i'm just gonna say it plainly — i think about u more than i probably should. not in a scary way, just in a "this random song came on and now i'm thinking about that one afternoon we spent playing carrom" kind of way. u know the kind.</p>
+<p>i know what u want from me. u want me to move on. u want me to forget the feelings and let things go back to being peaceful. and i understand why. u've told me that u feel like you've hurt people before, that you've rejected boys and don't want to ruin my life too. and maybe that's part of why this is so difficult for u — because u don't want to lose me completely. after all these years, i'm still your oldest friend, and i know that means something to u.</p>
+<p>i want u to know that i'm not writing this to change your mind. i'm not asking u to stay in a relationship with me. i'm not asking u to give me another chance. i'm not asking u to carry these feelings with me. if what u need is peace, then my last gift to u will be leaving u that peace.</p>
+<p>maybe i just need u to know that forgetting someone and letting them go aren't always the same thing.</p>
+<p>i've known u for so long that loving u was never something i suddenly decided to do. you've been a part of my life since i was a kid. somewhere along the way, friendship became something more for me, and i never really found a way to turn that feeling back off.</p>
+<p>and yeah, i know i'm probably just another boy to u. maybe one day i'll become someone u barely think about. but u were the first girl i ever took seriously. maybe that's why this has been harder for me than i know how to explain.</p>
+<p>i've mostly just been figuring it out inside my own head, and honestly, i haven't been very good at it.</p>
+<p>i keep rereading old texts like they're gonna say something different this time. they don't. they never do. but i read them anyway.</p>
+<p>i'm not writing this to make u feel some type of way or to ask for anything back. i just needed to put it somewhere that isn't my head, because my head has been getting a little crowded lately and u've taken up most of the good real estate in there.</p>
+<p>sometimes i think i carry a curse — the curse of losing whatever i've loved. and maybe i've ignored my own emotions for so long that i've started forgetting how to deal with them. i stayed quiet so many times just to keep things okay between us, even when it hurt me. not because i didn't care, but because i cared enough to not want to lose u.</p>
+<p>but i understand now that sometimes loving someone also means knowing when not to hold on.</p>
+<p>u've already started university, and there's a whole new part of your life happening around u now. i genuinely want u to live it. make friends. laugh too much. learn things. make mistakes. take care of yourself. take care of your health. enjoy the little things. make memories that have nothing to do with me.</p>
+<p>time doesn't come back, and i don't want u looking back one day and feeling like u spent part of your university life worrying about whether i was okay.</p>
+<p>if u ever think no one prays for u, think of me.</p>
+<p>not because i expect anything from u. not because i want u to come back. just because no matter where life takes u, i'll always hope you're okay.</p>
+<p>and remember, if no one claps for u, i'll clap so loud that u won't hear the ones who didn't.</p>
+<p>in my dreams, you're mine, but in reality, you're my dream.</p>
+<p>and maybe that's what i have to learn now — that someone can be incredibly important to u without having to belong to u.</p>
+<p>i know u want peace. so i'll try to give u that. i'll try not to keep pulling u back into something u've already decided to leave behind. maybe moving on doesn't mean pretending i never loved u. maybe it just means learning how to love the memory of u without asking u to become part of my future.</p>
+<p>so yeah. <b>this is me, still choosing u quietly, from a distance, without telling u about it until now.</b> if u're reading this, i hope u're doing okay. i hope whatever u're up to is treating u well. and i hope, somewhere down the line, u think of me the way i think of u — soft, and often, and without regret.</p>
+<p>one day i may die without ever getting the chance to say goodbye to u, but i'll never forget to say thank you. because u gave me one of the loveliest friendships i've ever had, and after knowing u for all these years, i don't think i'll ever be able to call that time meaningless.</p>
+<p>i hope university is good to u. i hope life is good to u. i hope u become everything u want to become. and more than anything, i hope u stay healthy, find your peace, and enjoy the years that are waiting for u.</p>
+<p>this isn't me asking u to stay.</p>
+<p>it's me finally saying that i understand why u need to go.</p>
+<p>anyway. that's it. that's the whole letter. i'm gonna go pretend i didn't just spill my entire chest onto a page now, cool cool cool.</p>
+</div>
+            <p class="letter-sign">— still stuck on u 🤍</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 6 · RUNAWAY BUTTON                                    -->
+<!-- ============================================================ -->
+<section style="background: linear-gradient(180deg, transparent 0%, #FBF6FF 100%);">
+    <div class="container-w">
+        <div class="reveal show" style="text-align:center">
+            <span class="eyebrow lilac">tiny experiment 🧪</span>
+            <h2 class="sec-title">try to <em class="text-lilac" style="font-style:italic">move on</em> rn</h2>
+            <p class="sec-lead" style="margin: 0 auto;">go ahead. tap that button. dare u. <span class="text-pink">i'll wait.</span></p>
+        </div>
+
+        <div class="runaway-stage reveal d1">
+            <p class="runaway-helper">⌖ tap "move on" if u think u can ~</p>
+
+            <div class="center-stack">
+                <div class="stay-btn anim-heartbeat" onclick="stayStuck()">stay stuck 🫠</div>
+                <p class="stage-quote">
+                    i mean obviously this one is the right answer ~<br>
+                    <b>(but try the other one anyway 👀)</b>
+                </p>
+            </div>
+
+            <button class="move-on-btn" id="runaway" onmouseover="dodgeButton(this)" ontouchstart="dodgeButton(this)" onclick="dodgeButton(this)">
+                ok i'll move on →
+            </button>
+        </div>
+
+        <p class="runaway-counter" id="runawayCounter">tap count: 0 · still stuck ~</p>
+
+        <!-- Hidden source texts for the runaway game. The JS reads these at
+             use time, so editing them changes what the counter says. -->
+        <div id="dodgeMsgsSource" style="display: none;">
+            <div>tap count: 1 · cute attempt 😌</div>
+            <div>tap count: 2 · button is faster than u</div>
+            <div>tap count: 3 · ok now ur just trying lol</div>
+            <div>tap count: 4 · the button is judging u</div>
+            <div>tap count: 5 · maybe u don't actually wanna 👀</div>
+            <div>tap count: 6 · gave up yet? thought so 🫠</div>
+            <div>tap count: 7 · ok ok i'll stop running ~ jk</div>
+        </div>
+        <div id="dodgeOverflowSource" style="display: none;">respectfully... no.</div>
+        <div id="stuck1Source" style="display: none;">✓ stuck status: confirmed · iconic.</div>
+        <div id="stuck2Source" style="display: none;">✓✓ double confirmed · very stuck · proud of u.</div>
+        <div id="stuckMoreSource" style="display: none;">beyond stuck · honestly impressive 🥹</div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 7 · OUTRO                                             -->
+<!-- ============================================================ -->
+<section class="outro">
+    <div class="outro-content">
+        <span class="outro-tag">side b · forever</span>
+
+        <h2 class="reveal show">guess i'm <em>staying stuck</em><br>and that's <span class="shimmer-text">kinda fine</span> 🤍</h2>
+
+        <p class="reveal d1">
+            because some people are not meant to be moved on from ~<br>
+            they're meant to be <b style="color: var(--pink-deep)">remembered. softly. forever.</b><br>
+            <span class="text-faint">(also pls don't show this to anyone i'd literally die 🫠)</span>
+        </p>
+
+        <div class="reveal d2">
+            <span class="heart-pulse anim-heartbeat" onclick="heartShower()">💗</span>
+        </div>
+        <p class="reveal d3 f-ext text-pink" style="font-size: 0.78rem; margin-top: 6px;">
+            ↳ tap the heart if u also stuck ~
+        </p>
+
+        <a class="outro-back reveal d4" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+            ↺ play it again
+        </a>
+
+        <p class="reveal d5" style="margin-top: 40px;">
+            <a href="https://www.instagram.com/dilzak.graphics/" target="_blank" rel="noopener" style="font-family: 'Matemasie', cursive; font-size: 0.7rem; letter-spacing: 2px; color: var(--ink-faint); text-decoration: none;">
+                @codexdilzak
+            </a>
+        </p>
+    </div>
+</section>
+
+<script>
+    /* ============== reveal-on-scroll ============== */
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('show');
+                io.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* ============== envelope open ============== */
+    function openEnvelope() {
+        const env = document.getElementById('envelope');
+        const letter = document.getElementById('letterCard');
+        const hint = document.getElementById('envelopeHint');
+        if (!env || !letter) return;
+        if (env.classList.contains('open')) return; // one-way open, like a real envelope
+        env.classList.add('open');
+        if (hint) hint.textContent = '↳ opened ~ go on, read it';
+        setTimeout(() => {
+            letter.classList.add('show');
+            letter.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 380);
+    }
+
+    /* ============== heart shower ============== */
+    function heartShower(count = 26) {
+        const fx = document.getElementById('fx');
+        const hearts = ['💕','💖','💗','💓','🤍','🌸','✨','🦋','💝'];
+        for (let i = 0; i < count; i++) {
+            setTimeout(() => {
+                const el = document.createElement('div');
+                el.className = 'heart-rise';
+                el.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                el.style.left = Math.random() * window.innerWidth + 'px';
+                el.style.fontSize = (1.4 + Math.random() * 2) + 'rem';
+                el.style.animationDuration = (3 + Math.random() * 2.5) + 's';
+                fx.appendChild(el);
+                setTimeout(() => el.remove(), 6000);
+            }, i * 70);
+        }
+    }
+
+    /* ============== runaway button ============== */
+    /* Messages live in the hidden #dodgeMsgsSource / #dodgeOverflowSource DOM
+       nodes (read at use time) so they stay editable. */
+    let dodgeCount = 0;
+
+    function dodgeButton(btn) {
+        const stage = btn.parentElement;
+        const sw = stage.clientWidth;
+        const sh = stage.clientHeight;
+        const bw = btn.offsetWidth;
+        const bh = btn.offsetHeight;
+
+        // pick a random spot inside the stage padding
+        const padding = 12;
+        const maxL = Math.max(0, sw - bw - padding * 2);
+        const maxT = Math.max(0, sh - bh - padding * 2);
+        const newL = padding + Math.random() * maxL;
+        const newT = padding + Math.random() * maxT;
+
+        btn.style.left = newL + 'px';
+        btn.style.top  = newT + 'px';
+        btn.style.right = 'auto';
+
+        // tiny rotation for chaos
+        btn.style.transform = 'rotate(' + ((Math.random() - 0.5) * 14) + 'deg)';
+
+        dodgeCount++;
+        const counter = document.getElementById('runawayCounter');
+        const msgs = document.querySelectorAll('#dodgeMsgsSource > div');
+        if (dodgeCount <= msgs.length) {
+            counter.textContent = msgs[dodgeCount - 1].textContent.trim();
+        } else {
+            const overflow = document.getElementById('dodgeOverflowSource').textContent.trim();
+            counter.textContent = 'tap count: ' + dodgeCount + ' · ' + overflow;
+        }
+    }
+
+    /* ============== stay stuck (the right button) ============== */
+    let stuckTaps = 0;
+    function stayStuck() {
+        stuckTaps++;
+        heartShower(14);
+        const counter = document.getElementById('runawayCounter');
+        if (stuckTaps === 1) {
+            counter.textContent = document.getElementById('stuck1Source').textContent.trim();
+        } else if (stuckTaps === 2) {
+            counter.textContent = document.getElementById('stuck2Source').textContent.trim();
+        } else {
+            counter.textContent = '✓'.repeat(Math.min(stuckTaps, 6)) + ' ' +
+                document.getElementById('stuckMoreSource').textContent.trim();
+        }
+    }
+
+    /* ============== configurable counts (hidden count els + live layout) ============== */
+    (function(){
+        const MINC = 2, MAXC = 10;
+        const countEl = document.getElementById('trackCount');
+        const container = document.querySelector('.player-card');
+        if (!countEl || !container) return;
+        function count() {
+            let n = parseInt((countEl.textContent || '').trim(), 10);
+            if (isNaN(n)) n = 6;
+            return Math.max(MINC, Math.min(MAXC, n));
+        }
+        function layout() {
+            const n = count();
+            container.querySelectorAll('.track').forEach((el, i) => {
+                el.style.display = i < n ? '' : 'none';
+            });
+        }
+        layout();
+        new MutationObserver(layout).observe(countEl, { childList: true, characterData: true, subtree: true });
+    })();
+
+    (function(){
+        const MINC = 2, MAXC = 10;
+        const countEl = document.getElementById('failCount');
+        const container = document.querySelector('.notebook');
+        if (!countEl || !container) return;
+        function count() {
+            let n = parseInt((countEl.textContent || '').trim(), 10);
+            if (isNaN(n)) n = 6;
+            return Math.max(MINC, Math.min(MAXC, n));
+        }
+        function layout() {
+            const n = count();
+            container.querySelectorAll('.fail-item').forEach((el, i) => {
+                el.style.display = i < n ? '' : 'none';
+            });
+        }
+        layout();
+        new MutationObserver(layout).observe(countEl, { childList: true, characterData: true, subtree: true });
+    })();
+
+    (function(){
+        const MINC = 2, MAXC = 8;
+        const countEl = document.getElementById('polCount');
+        const container = document.querySelector('.photo-wall');
+        if (!countEl || !container) return;
+        function count() {
+            let n = parseInt((countEl.textContent || '').trim(), 10);
+            if (isNaN(n)) n = 4;
+            return Math.max(MINC, Math.min(MAXC, n));
+        }
+        function layout() {
+            const n = count();
+            container.querySelectorAll('.pol').forEach((el, i) => {
+                el.style.display = i < n ? '' : 'none';
+            });
+        }
+        layout();
+        new MutationObserver(layout).observe(countEl, { childList: true, characterData: true, subtree: true });
+    })();
+
+    /* ============== initial setup of runaway button position ============== */
+    document.addEventListener('DOMContentLoaded', () => {
+        const btn = document.getElementById('runaway');
+        if (!btn) return;
+        const stage = btn.parentElement;
+        // start in top-right corner
+        btn.style.top = '14px';
+        btn.style.right = '14px';
+        btn.style.left = 'auto';
+    });
+</script>
+
+
+<!-- ============== Apple-style emoji on every OS ============== -->
+<style>
+    img.apple-emoji {
+        display: inline-block;
+        width: 1.15em;
+        height: 1.15em;
+        margin: 0 0.03em;
+        vertical-align: -0.22em;
+        background: none;
+        -webkit-text-fill-color: initial;
+        pointer-events: none;
+        user-select: none;
+    }
+</style>
+<script>
+(function () {
+    /* Apple devices already draw Apple emoji natively, so we leave them alone.
+       Add ?emoji=force to the URL to test the image version on a Mac/iPhone. */
+    var forced = /[?&]emoji=force/.test(location.search);
+    var isApple = /iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent);
+    if (isApple && !forced) return;
+
+    var BASE = 'https://cdn.jsdelivr.net/npm/emoji-datasource-apple@15.0.1/img/apple/64/';
+
+    /* one emoji = flag pair | keycap | pictograph (+ variation/skin tone) joined by ZWJ */
+    var EMOJI_RE = new RegExp(
+        '(?:\\p{Regional_Indicator}{2})' +
+        '|(?:[#*0-9]\\uFE0F?\\u20E3)' +
+        '|(?:\\p{Extended_Pictographic}\\uFE0F?\\p{Emoji_Modifier}?' +
+        '(?:\\u200D\\p{Extended_Pictographic}\\uFE0F?\\p{Emoji_Modifier}?)*)',
+        'gu'
+    );
+    var EMOJI_PRES = /\p{Emoji_Presentation}/u;
+    var SKIP = { SCRIPT: 1, STYLE: 1, TEXTAREA: 1, INPUT: 1, TITLE: 1, NOSCRIPT: 1, OPTION: 1 };
+
+    function codepoints(str) {
+        var out = [];
+        for (var ch of str) out.push(ch.codePointAt(0).toString(16));
+        return out;
+    }
+
+    /* file-name candidates: as-is, without FE0F, with FE0F after first char */
+    function candidates(str) {
+        var cps = codepoints(str);
+        var noFe = cps.filter(function (c) { return c !== 'fe0f'; });
+        var withFe = [noFe[0], 'fe0f'].concat(noFe.slice(1));
+        var list = [cps.join('-'), noFe.join('-'), withFe.join('-')];
+        return list.filter(function (v, i) { return list.indexOf(v) === i; });
+    }
+
+    function makeImg(emoji) {
+        var names = candidates(emoji);
+        var i = 0;
+        var img = document.createElement('img');
+        img.className = 'apple-emoji';
+        img.alt = emoji;
+        img.draggable = false;
+        img.decoding = 'async';
+        img.onerror = function () {
+            i++;
+            if (i < names.length) {
+                img.src = BASE + names[i] + '.png';
+            } else if (img.parentNode) {
+                /* nothing worked - fall back to the system emoji */
+                img.parentNode.replaceChild(document.createTextNode(emoji), img);
+            }
+        };
+        img.src = BASE + names[0] + '.png';
+        return img;
+    }
+
+    function shouldReplace(m) {
+        /* leave plain text symbols (like a lone heart-suit or copyright sign) alone */
+        return EMOJI_PRES.test(m) || m.indexOf('\uFE0F') > -1 ||
+               m.indexOf('\u200D') > -1 || /^\p{Regional_Indicator}/u.test(m) ||
+               m.indexOf('\u20E3') > -1;
+    }
+
+    function replaceInTextNode(node) {
+        var text = node.nodeValue;
+        if (!text) return;
+        EMOJI_RE.lastIndex = 0;
+        var frag = null, last = 0, m;
+        while ((m = EMOJI_RE.exec(text)) !== null) {
+            if (!shouldReplace(m[0])) continue;
+            if (!frag) frag = document.createDocumentFragment();
+            if (m.index > last) frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+            frag.appendChild(makeImg(m[0]));
+            last = m.index + m[0].length;
+        }
+        if (frag) {
+            if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+            node.parentNode.replaceChild(frag, node);
+        }
+    }
+
+    function walk(root) {
+        if (root.nodeType === 3) {
+            var p = root.parentNode;
+            if (p && !SKIP[p.nodeName]) replaceInTextNode(root);
+            return;
+        }
+        if (root.nodeType !== 1 || SKIP[root.nodeName]) return;
+        if (root.classList && root.classList.contains('apple-emoji')) return;
+        var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+            acceptNode: function (n) {
+                var p = n.parentNode;
+                return (p && SKIP[p.nodeName]) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT;
+            }
+        });
+        var nodes = [], n;
+        while ((n = w.nextNode())) nodes.push(n);
+        nodes.forEach(replaceInTextNode);
+    }
+
+    function start() {
+        walk(document.body);
+        /* also catches emojis added later by your scripts (heart shower, dodge messages, etc.) */
+        new MutationObserver(function (muts) {
+            muts.forEach(function (mu) {
+                if (mu.type === 'characterData') walk(mu.target);
+                else mu.addedNodes.forEach(walk);
+            });
+        }).observe(document.body, { childList: true, characterData: true, subtree: true });
+    }
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+    else start();
+})();
+</script>
+
+</body>
+</html>
