@@ -42,6 +42,7 @@
             min-height: 100vh;
             line-height: 1.5;
             position: relative;
+            overflow-wrap: break-word;
         }
 
         /* soft watercolour wash + faint dot grid */
@@ -305,19 +306,18 @@
             font-family: 'DynaPuff', cursive;
             color: var(--ink);
             font-size: 1.02rem;
-            line-height: 1.15;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            line-height: 1.2;
+            white-space: normal;
+            overflow-wrap: anywhere;
         }
         .track-cap {
             font-family: 'Handlee', cursive;
             color: var(--ink-soft);
             font-size: 0.84rem;
-            margin-top: 2px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            margin-top: 3px;
+            line-height: 1.35;
+            white-space: normal;
+            overflow-wrap: anywhere;
         }
         .track-time {
             font-family: 'Matemasie', cursive;
@@ -412,18 +412,12 @@
             padding-right: 6px;
         }
         .fail-text .cross {
-            position: relative;
             color: var(--ink-soft);
-        }
-        .fail-text .cross::after {
-            content: '';
-            position: absolute;
-            left: -2px; right: -2px;
-            top: 56%;
-            height: 2px;
-            background: var(--pink-deep);
-            transform: rotate(-2deg);
-            border-radius: 2px;
+            /* real strikethrough: follows the text across every wrapped line */
+            text-decoration-line: line-through;
+            text-decoration-color: var(--pink-deep);
+            text-decoration-thickness: 2.5px;
+            text-decoration-skip-ink: none;
         }
         .fail-text .why {
             display: block;
@@ -548,19 +542,16 @@
             content: '';
             position: absolute;
             left: 0; right: 0; bottom: 0;
-            height: 0;
-            border-left: 190px solid transparent;
-            border-right: 190px solid transparent;
-            border-bottom: 110px solid #FFDEE8;
-            margin: 0 auto;
+            height: 110px;
+            background: #FFDEE8;
+            clip-path: polygon(0 100%, 100% 100%, 50% 0);
         }
         .envelope-flap {
             position: absolute;
             top: 0; left: 0; right: 0;
-            height: 0;
-            border-left: 190px solid transparent;
-            border-right: 190px solid transparent;
-            border-top: 118px solid #FFC8DD;
+            height: 118px;
+            background: #FFC8DD;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
             transform-origin: top center;
             transition: transform 0.6s cubic-bezier(0.3,0.8,0.3,1);
             z-index: 3;
@@ -788,7 +779,9 @@
             user-select: none;
             transition: top 0.4s cubic-bezier(0.34,1.56,0.64,1),
                         left 0.4s cubic-bezier(0.34,1.56,0.64,1);
-            white-space: nowrap;
+            white-space: normal;
+            text-align: center;
+            max-width: calc(100% - 24px);
         }
         .runaway-counter {
             font-family: 'Matemasie', cursive;
@@ -1411,13 +1404,13 @@
             <p class="letter-date">to u · whenever ur reading this</p>
             <div class="letter-body">
 <p>okay so. i wrote this like four different times because i kept chickening out halfway through, but here's attempt number five and i'm actually gonna finish it this time so bear with me.</p>
-<p>i don't really know how to say this without sounding dramatic so i'm just gonna say it plainly — i think about u more than i probably should. not in a scary way, just in a "this random song came on and now i'm thinking about that one afternoon we spent doing absolutely nothing" kind of way. u know the kind.</p>
+<p>i don't really know how to say this without sounding dramatic so i'm just gonna say it plainly — i think about u more than i probably should. not in a scary way, just in a "this random song came on and now i'm thinking about that one afternoon we spent playing carrom" kind of way. u know the kind.</p>
 <p>i know what u want from me. u want me to move on. u want me to forget the feelings and let things go back to being peaceful. and i understand why. u've told me that u feel like you've hurt people before, that you've rejected boys and don't want to ruin my life too. and maybe that's part of why this is so difficult for u — because u don't want to lose me completely. after all these years, i'm still your oldest friend, and i know that means something to u.</p>
 <p>i want u to know that i'm not writing this to change your mind. i'm not asking u to stay in a relationship with me. i'm not asking u to give me another chance. i'm not asking u to carry these feelings with me. if what u need is peace, then my last gift to u will be leaving u that peace.</p>
 <p>maybe i just need u to know that forgetting someone and letting them go aren't always the same thing.</p>
 <p>i've known u for so long that loving u was never something i suddenly decided to do. you've been a part of my life since i was a kid. somewhere along the way, friendship became something more for me, and i never really found a way to turn that feeling back off.</p>
 <p>and yeah, i know i'm probably just another boy to u. maybe one day i'll become someone u barely think about. but u were the first girl i ever took seriously. maybe that's why this has been harder for me than i know how to explain.</p>
-<p>there's no one around me telling me it'll get easier. no one even knows about this. so i've mostly just been figuring it out inside my own head, and honestly, i haven't been very good at it.</p>
+<p>i've mostly just been figuring it out inside my own head, and honestly, i haven't been very good at it.</p>
 <p>i keep rereading old texts like they're gonna say something different this time. they don't. they never do. but i read them anyway.</p>
 <p>i'm not writing this to make u feel some type of way or to ask for anything back. i just needed to put it somewhere that isn't my head, because my head has been getting a little crowded lately and u've taken up most of the good real estate in there.</p>
 <p>sometimes i think i carry a curse — the curse of losing whatever i've loved. and maybe i've ignored my own emotions for so long that i've started forgetting how to deal with them. i stayed quiet so many times just to keep things okay between us, even when it hurt me. not because i didn't care, but because i cared enough to not want to lose u.</p>
@@ -1516,7 +1509,7 @@
         </a>
 
         <p class="reveal d5" style="margin-top: 40px;">
-            <a href="https://instagram.com/" target="_blank" rel="noopener" style="font-family: 'Matemasie', cursive; font-size: 0.7rem; letter-spacing: 2px; color: var(--ink-faint); text-decoration: none;">
+            <a href="https://www.instagram.com/dilzak.graphics/" target="_blank" rel="noopener" style="font-family: 'Matemasie', cursive; font-size: 0.7rem; letter-spacing: 2px; color: var(--ink-faint); text-decoration: none;">
                 @codexdilzak
             </a>
         </p>
@@ -1532,7 +1525,7 @@
                 io.unobserve(e.target);
             }
         });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px -20px 0px' });
 
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
